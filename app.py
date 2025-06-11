@@ -351,7 +351,7 @@ def evaluate_risk(vitals):
 if __name__ == "__main__":
     threading.Thread(target=simulator_thread, daemon=True).start()
     threading.Thread(target=subscriber_thread, daemon=True).start()
-    socketio.run(app, host="0.0.0.0", port=5000)
+    socketio.run(app, host="0.0.0.0", port=5000, allow_unsafe_werkzeug=True)
 #    app.run(debug=True, use_reloader=False)
     
 #if __name__ == "__main__":
