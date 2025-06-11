@@ -312,7 +312,8 @@ def on_message(client, userdata, msg):
         patients[pid]["vitals"] = vitals
         risk = evaluate_risk(vitals)
         patients[pid]["risk"] = risk
-        socketio.emit("vitals_update", {"id": pid, "vitals": vitals, "risk": risk})
+        socketio.emit("vitals_update", {"id": pid, "vitals": vitals, "risk": risk}, broadcast=True)
+
 
 # Start MQTT subscriber thread
 def subscriber_thread():
