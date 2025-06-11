@@ -19,9 +19,16 @@ from flask_socketio import SocketIO, emit
 
 load_dotenv()  # This loads variables from .env into os.environ
 
+ALLOW_ORIGINS = os.getenv("ALLOW_ORIGIN")
+
+
 app = Flask(__name__)
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+#CORS(app)
+CORS(app, origins=[ALLOW_ORIGINS], supports_credentials=True)
+
+#socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins=ALLOW_ORIGINS)
+
 
 #openai.api_key = os.getenv("OPENAI_API_KEY")
 
