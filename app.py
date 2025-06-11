@@ -27,7 +27,7 @@ app = Flask(__name__)
 CORS(app, origins=["https://iot-patient-monitoring-client.vercel.app"], supports_credentials=True)
 
 #socketio = SocketIO(app, cors_allowed_origins="*")
-socketio = SocketIO(app, cors_allowed_origins="https://iot-patient-monitoring-client.vercel.app")
+socketio = SocketIO(app, cors_allowed_origins="https://iot-patient-monitoring-client.vercel.app", async_mode='threading')
 
 
 #openai.api_key = os.getenv("OPENAI_API_KEY")
