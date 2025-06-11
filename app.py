@@ -352,7 +352,7 @@ if __name__ == "__main__":
     threading.Thread(target=simulator_thread, daemon=True).start()
     threading.Thread(target=subscriber_thread, daemon=True).start()
     socketio.run(app, host="0.0.0.0", port=5000)
-    app.run(debug=True, use_reloader=False)
+#    app.run(debug=True, use_reloader=False)
     
 #if __name__ == "__main__":
 #    threading.Thread(target=simulate_vitals, daemon=True).start()
