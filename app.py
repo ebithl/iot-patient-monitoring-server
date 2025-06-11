@@ -49,7 +49,7 @@ current_vitals = {}
 #MQTT_BROKER = "localhost"
 #MQTT_PORT = 1883
 MQTT_BROKER = os.getenv("MQTT_BROKER")
-MQTT_PORT = os.getenv("MQTT_PORT")
+MQTT_PORT = int(os.getenv("MQTT_PORT"))
 MQTT_TOPIC = "patient/vitals"
 
 @app.route("/patients", methods=["GET"])
