@@ -119,7 +119,7 @@ def simulator_thread():
             vitals = generate_vitals(pid)
             message = {"id": pid, "vitals": vitals}
             publisher.publish(MQTT_TOPIC, json.dumps(message))
-        time.sleep(30)
+        time.sleep(5)
         
 # --- Background Vital Simulator Thread ---
 def simulate_vitals():
