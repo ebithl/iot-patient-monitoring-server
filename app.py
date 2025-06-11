@@ -51,6 +51,8 @@ current_vitals = {}
 MQTT_BROKER = os.getenv("MQTT_BROKER")
 MQTT_PORT = int(os.getenv("MQTT_PORT"))
 MQTT_TOPIC = "patient/vitals"
+MQTT_USERNAME = os.getenv("MQTT_USERNAME")
+MQTT_PASSWORD = os.getenv("MQTT_PASSWORD")
 
 @app.route("/patients", methods=["GET"])
 def get_patients():
@@ -100,6 +102,7 @@ def chat():
 # MQTT simulator thread
 def simulator_thread():
     publisher = mqtt.Client()
+    publisher.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
     publisher.tls_set()
     publisher.connect(MQTT_BROKER, MQTT_PORT)
     while True:
@@ -307,6 +310,7 @@ def on_message(client, userdata, msg):
 # Start MQTT subscriber thread
 def subscriber_thread():
     client = mqtt.Client()
+    client.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
     client.tls_set()
     client.on_message = on_message
     client.connect(MQTT_BROKER, MQTT_PORT)
